@@ -6,15 +6,19 @@
     body {
       background: #fafafa;
     }
+    feedback-form::part(open-feedback-button) {
+      background-color: chartreuse;
+    }
   </style>
+  <script type=module src='../dist/src/feedback-form.js'></script>
 </head>
 <body>
   <h1>This is my fabulous page</h1>
   <p>There is a lot of great stuff here</p>
   <p>Bla blah blah</p>
-  <script type=module src='../dist/src/feedback-form.js'></script>
 
   <feedback-form>
   </feedback-form>
+
 </body>
 </html>

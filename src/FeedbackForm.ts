@@ -9,6 +9,15 @@ export class FeedbackForm extends LitElement {
 
   openFeedback(e: Event) { this.displayForm = true; }
 
+  static styles = css`
+    input, textarea {
+      display: block;
+    }
+    * {
+      font-family: Arial;
+    }
+  `;
+
   async submitFeedback(event: Event) {
     event.preventDefault()
     const formData = new FormData(event.target as HTMLFormElement)
@@ -28,24 +37,24 @@ export class FeedbackForm extends LitElement {
     return html`
       ${this.displayForm ? html`
         <slot name="form">
-          <form @submit=${this.submitFeedback}>
+          <form @submit=${this.submitFeedback} part="form">
             <div part="name-input-group">
               <label>Name</label>
-              <input name="name"></input>
+              <input name="name" part="input"></input>
             </div>
             <div part="email-input-group">
               <label>Email</label>
-              <input name="email"></input>
+              <input name="email" part="input"></input>
             </div>
             <div part="textarea-input-group">
               <label>Message</label>
-              <textarea name="message"></textarea>
+              <textarea name="message" part="input"></textarea>
             </div>
             <button part="submit-button">Send Feedback</button>
           </form>
         </slot>
       ` : html`
-        <button @click=${this.openFeedback} part="open-feedback-button">Feedback!</button>
+        <button @click=${this.openFeedback} part="open-feedback-button" slot="open-feedback">Feedback!</button>
       `}
       ${this.displaySuccess ? html`
         <slot name="success"><h1>Great job!</h1></slot>
